@@ -1,4 +1,4 @@
-A graph is a non-linear data structure consisting of **nodes (vertices)** and **edges** that represent relationships between entities. It is formally defined as a pair of sets $$ (V, E) $$, where $$ V $$ is the set of vertices and $$ E $$ is the set of edges connecting vertex pairs. Graphs are widely used in fields like computer networks, social systems, and route optimization due to their ability to model complex relational data.
+A graph is a non-linear data structure consisting of **nodes (vertices)** and **edges** representing relationships between entities. It is formally defined as a pair of sets **(V, E)**, where  **V** is the set of vertices and **E** is the set of edges connecting vertex pairs. Graphs are widely used in fields like computer networks, social systems, and route optimization due to their ability to model complex relational data.
 
 ---
 
