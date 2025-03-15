@@ -1,0 +1,13 @@
+def pair_product(numbers, target_product):
+    previous_nums = {}
+
+    for index, num in enumerate(numbers):
+        complement = target_product / num
+
+        if complement in previous_nums:
+            return (index, previous_nums[complement])
+
+        previous_nums[num] = index
+
+
+print(pair_product([4, 7, 9, 2, 5, 1], 35))
