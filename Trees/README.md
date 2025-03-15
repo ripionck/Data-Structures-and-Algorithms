@@ -1,4 +1,4 @@
-A tree is a hierarchical, non-linear data structure that organizes elements in a parent-child relationship, enabling efficient data operations in various applications like databases and file systems. Unlike linear structures (arrays, linked lists), trees allow multi-directional access, improving performance as data scales. Here's a detailed breakdown:
+A **tree** is a hierarchical, non-linear data structure that organizes elements in a parent-child relationship, enabling efficient data operations in various applications like databases and file systems. Unlike linear structures **(arrays, linked lists)**, trees allow multi-directional access, improving performance as data scales. Here's a detailed breakdown:
 
 ## Core Components
 
@@ -72,9 +72,9 @@ A **binary tree** is a hierarchical data structure in which each node has at mos
    - A pointer/reference to the right child.
 2. **Hierarchy**: The tree starts with a single root node, and every other node is connected via edges.
 3. **Maximum Nodes**:
-   - At level $$l$$: $$2^l$$.
-   - In a tree of height $$h$$: $$2^{h+1} - 1$$.
-4. **Height**: The height of a binary tree with $$n$$ nodes is at least $$\lceil \log_2(n+1) \rceil$$ (balanced tree) and at most $$n-1$$ (degenerate or skewed tree).
+   - At level **l**: **2^l**.
+   - In a tree of height **h**: **2^{h+1} - 1**.
+4. **Height**: The height of a binary tree with **n** nodes is at least **\lceil \log_2(n+1) \rceil** (balanced tree) and at most **n-1** (degenerate or skewed tree).
 
 ---
 
@@ -144,4 +144,4 @@ This binary tree can be represented using either linked nodes or an array as des
 
 ---
 
-Binary trees are foundational structures that enable efficient operations like searching ($$O(\log n)$$ in balanced trees), insertion, and deletion. Their versatility makes them essential in numerous applications such as databases, file systems, and AI algorithms.
+Binary trees are foundational structures that enable efficient operations like searching (**O(\log n)** in balanced trees), insertion, and deletion. Their versatility makes them essential in numerous applications such as databases, file systems, and AI algorithms.

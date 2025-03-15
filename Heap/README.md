@@ -17,10 +17,10 @@ The heap is often implemented using an array due to its simplicity and efficienc
 ### Mapping Between Tree and Array
 
 - The root node is stored at index 0.
-- For a node at index $$i$$:
-  - Its **left child** is at index $$2i + 1$$.
-  - Its **right child** is at index $$2i + 2$$.
-  - Its **parent** is at index $$\lfloor (i-1)/2 \rfloor$$.
+- For a node at index **i**:
+  - Its **left child** is at index **2i + 1**.
+  - Its **right child** is at index **2i + 2**.
+  - Its **parent** is at index **\lfloor (i-1)/2 \rfloor**.
 
 ### Example
 
@@ -64,4 +64,4 @@ The array representation would be: `[9, 8,[7][4][5]`.
 - Sorting algorithms (e.g., Heapsort)
 - Graph algorithms (e.g., Dijkstra's shortest path)
 
-Python's `heapq` module simplifies these operations with efficient time complexity ($$O(\log n)$$ for insertion and removal). It is widely used in real-time systems and data processing tasks.
+Python's `heapq` module simplifies these operations with efficient time complexity (**O(\log n)** for insertion and removal). It is widely used in real-time systems and data processing tasks.

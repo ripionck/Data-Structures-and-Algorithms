@@ -1,4 +1,4 @@
-A graph is a non-linear data structure consisting of **nodes (vertices)** and **edges** representing relationships between entities. It is formally defined as a pair of sets **(V, E)**, where  **V** is the set of vertices and **E** is the set of edges connecting vertex pairs. Graphs are widely used in fields like computer networks, social systems, and route optimization due to their ability to model complex relational data.
+A graph is a non-linear data structure consisting of **nodes (vertices)** and **edges** representing relationships between entities. It is formally defined as a pair of sets **(V, E)**, where **V** is the set of vertices and **E** is the set of edges connecting vertex pairs. Graphs are widely used in fields like computer networks, social systems, and route optimization due to their ability to model complex relational data.
 
 ---
 
@@ -109,8 +109,8 @@ A graph is a non-linear data structure consisting of **nodes (vertices)** and **
 Most graph implementations combine arrays and linked lists. For example:  
 | Representation | Description | Pros/Cons |
 |------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **Adjacency Matrix** | 2D array where `matrix[i][j] = 1` if an edge exists between nodes i and j. | Fast lookup ($$O(1)$$) but space-inefficient ($$O(V^2)$$) for sparse graphs. |
-| **Adjacency List** | Array of linked lists, where each list stores a node’s neighbors. | Space-efficient ($$O(V + E)$$) but slower edge existence checks ($$O(V)$$). |
+| **Adjacency Matrix** | 2D array where `matrix[i][j] = 1` if an edge exists between nodes i and j. | Fast lookup (**O(1)**) but space-inefficient (**O(V^2)**) for sparse graphs. |
+| **Adjacency List** | Array of linked lists, where each list stores a node’s neighbors. | Space-efficient (**O(V + E)**) but slower edge existence checks (**O(V)**). |
 
 ---
 
