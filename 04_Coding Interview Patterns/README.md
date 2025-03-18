@@ -121,7 +121,7 @@
     - [Optimization](#optimization-1)
   - [Longest Palindrome in String](#longest-palindrome-in-string)
   - [Max Subarray Sum](#max-subarray-sum)
-  - [1 Knapsack](#1-knapsack)
+  - [0/1 Knapsack](#0-1-knapsack)
   - [Largest Square in Matrix](#largest-square-in-matrix)
     - [Optimization](#optimization-2)
 - [Char 16 Greedy](#char-16-greedy)
@@ -2972,7 +2972,7 @@ def max_subarray_sum_dp_optimized(nums: List[int]) -> int:
 
 <!-- TOC --><a name="01-knapsack"></a>
 
-## 0/1 Knapsack
+## 0-1-knapsack
 
 ```python
 def knapsack(cap: int, weights: List[int], values: List[int]) -> int:
