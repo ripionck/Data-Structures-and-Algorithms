@@ -390,6 +390,15 @@ A complete binary tree is just like a full binary tree, but with two major diffe
 1. All the leaf elements must lean towards the left.
 2. The last leaf element might not have a right sibling i.e. a complete binary tree doesn't have to be a full binary tree.
 
+**Binary Search Tree**
+A Binary Search Tree is a binary tree where each node contains a key and an optional associated value. It allows particularly fast lookup, addition, and removal of items.
+
+The nodes are arranged in a binary search tree according to the following properties:
+
+1. The left subtree of a particular node will always contain nodes with keys less than that node’s key.
+2. The right subtree of a particular node will always contain nodes with keys greater than that node’s key.
+3. The left and the right subtree of a particular node will also, in turn, be binary search trees.
+
 [Back to Top](#table-of-contents)
 
 ### Graphs
