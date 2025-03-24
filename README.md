@@ -65,8 +65,6 @@ Data structure is a storage that is used to store and organize data. It is a way
 - **Sorting**: Having data that is sorted.
 - **Access**: How do we access this data that we have on our computer?
 
-[Back to Top](#table-of-contents)
-
 ### Arrays
 
 An array is a collection of items of some data type stored at **contiguous** (one after another) memory locations.
