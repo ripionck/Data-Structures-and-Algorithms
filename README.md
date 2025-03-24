@@ -557,9 +557,8 @@ In **adjacency list** representation of a graph, every vertex is represented as 
 
 The **Edge List** is another way to represent adjacent vertices. It is much more efficient when trying to figure out the adjacent nodes in a graph. The edge list contains a list of edges in alphanumerical order.
 
-|                                      |                                      |
-| ------------------------------------ | ------------------------------------ |
-| ![Edge List](images/edge-list01.png) | ![Edge List](images/edge-list02.png) |
+![Edge List](images/edge-list01.png)
+![Edge List](images/edge-list02.png)
 
 **Graphs Good at:**
 
