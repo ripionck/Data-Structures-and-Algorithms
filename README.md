@@ -438,7 +438,7 @@ This distance constraint ensures that it takes approximately the same amount of 
 
 The primary issue with binary search trees is that they can be unbalanced. In the worst case, they are still not more efficient than a linked list, performing operations such as insertions, deletions, and searches in O(n) time.
 
-![AVL & RED Black Tree](avl-red-black.png)
+![AVL & RED Black Tree](images/avl-red-black.png)
 
 **AVL Trees**
 
