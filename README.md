@@ -14,15 +14,13 @@ A comprehensive guide to data structures and algorithms, with detailed explanati
 4. [Linked Lists](#linked-lists)
 5. [Stacks and Queues](#stacks-and-queues)
 6. [Trees](#trees)
-7. [Binary Trees](#binary-trees)
-8. [Graphs](#graphs)
+7. [Graphs](#graphs)
 
 ### Algorithms
 
 1. [What is an Algorithm?](#what-is-an-algorithm)
 2. [Recursion](#recursion)
-3. [Stack Overflow](#stack-overflow)
-4. [Sorting Algorithms](#sorting-algorithms)
+3. [Sorting Algorithms](#sorting-algorithms)
    - [Bubble Sort](#bubble-sort)
    - [Selection Sort](#selection-sort)
    - [Insertion Sort](#insertion-sort)
@@ -30,19 +28,14 @@ A comprehensive guide to data structures and algorithms, with detailed explanati
    - [Merge Sort](#merge-sort)
    - [Quick Sort](#quick-sort)
    - [Selecting a Sorting Algorithm](#selecting-a-sorting-algorithm)
-5. [Searching Algorithms](#searching-algorithms)
+4. [Searching Algorithms](#searching-algorithms)
    - [Linear Search](#linear-search)
    - [Binary Search](#binary-search)
    - [BFS](#bfs)
    - [DFS](#dfs)
    - [Selecting a Searching Algorithm](#selecting-a-searching-algorithm)
-6. [Dijkstra and Bellman-Ford](#dijkstra-and-bellman-ford)
-7. [Negative Edge Weights](#negative-edge-weights)
-8. [Relaxation](#relaxation)
-9. [Sparse Graphs](#sparse-graphs)
-10. [Dynamic Programming](#dynamic-programming)
-11. [Caching](#caching)
-12. [Memoization](#memoization)
+5. [Dijkstra and Bellman-Ford](#dijkstra-and-bellman-ford)
+6. [Dynamic Programming](#dynamic-programming)
 
 ---
 
@@ -65,7 +58,7 @@ Data structure is a storage that is used to store and organize data. It is a way
 - **Sorting**: Having data that is sorted.
 - **Access**: How do we access this data that we have on our computer?
 
-### Arrays
+## Arrays
 
 An array is a collection of items of some data type stored at **contiguous** (one after another) memory locations.
 
@@ -126,7 +119,7 @@ However, we can avoid it if we utilize some of the more modern languages that su
 
 [Back to Top](#table-of-contents)
 
-### Hash Tables
+## Hash Tables
 
 A hash table is a type of data structure that stores pairs of key-value. The key is sent to a hash function that performs arithmetic operations on it.
 
@@ -217,7 +210,7 @@ Even if you feel that the correct decisions have been taken, it is always vital 
 
 [Back to Top](#table-of-contents)
 
-### Linked Lists
+## Linked Lists
 
 A linked list is a common data structure made of one or more nodes. Each node contains a value and a pointer to the previous/next node forming the chain-like structure. These nodes are stored randomly in the system's memory, which improves its space complexity compared to the array.
 
@@ -286,7 +279,7 @@ A DLL costs more in terms of memory due to the inclusion of a p (previous) point
 
 [Back to Top](#table-of-contents)
 
-### Stacks and Queues
+## Stacks and Queues
 
 Stacks and Queues are both what we call linear data structures. Linear data structures allow us to traverse (that is go through) data elements sequentially (one by one) in which only one data element can be directly reached.
 
@@ -337,7 +330,7 @@ Users of this data structure solely carry out their efficient write operations. 
 
 [Back to Top](#table-of-contents)
 
-### Trees
+## Trees
 
 A Tree is a non-linear data structure and a hierarchy consisting of a collection of nodes such that each node of the tree stores a value and a list of references to other nodes (the “children”).
 
@@ -530,6 +523,8 @@ Visits nodes in the order: **Left Subtree → Root → Right Subtree**.
 2. Visit the current node.
 3. Recursively traverse the right subtree.
 
+![Inorder Traversal](images/inorder.png)
+
 ```python
 def inorder(root):
     if root:
@@ -550,6 +545,8 @@ Visits nodes in the order: **Root → Left Subtree → Right Subtree**.
 1. Visit the current node.
 2. Recursively traverse the left subtree.
 3. Recursively traverse the right subtree.
+
+![Preorder Traversal](images/preorder.png)
 
 ```python
 def preorder(root):
@@ -572,6 +569,8 @@ Visits nodes in the order: **Left Subtree → Right Subtree → Root**.
 2. Recursively traverse the right subtree.
 3. Visit the current node.
 
+![Postorder Traversal](images/postorder.png)
+
 ```python
 def postorder(root):
     if root:
@@ -593,6 +592,8 @@ Visits nodes **level by level**, from left to right.
 2. Enqueue the root node.
 3. Dequeue a node, print it, and enqueue its children (left first, then right).
 4. Repeat until the queue is empty.
+
+![Level Order](images/level-order.png)
 
 ```python
 from queue import Queue
@@ -626,7 +627,7 @@ For binary trees, DFS-based traversals (inorder, preorder, postorder) use recurs
 
 [Back to Top](#table-of-contents)
 
-### Graphs
+## Graphs
 
 The Graph data structure is a collection of nodes. But unlike with trees, there are no rules about how nodes should be connected. There are no root, parent, or child nodes. Also, nodes are called vertices and they are connected by edges.
 
@@ -854,7 +855,7 @@ Every time you are using a tree or converting Something into a tree, consider Re
 
 [Back to Top](#table-of-contents)
 
-### Sorting Algorithms
+## Sorting Algorithms
 
 A sorting algorithm is used to arrange elements of an array/list in a specific order.
 
@@ -890,7 +891,7 @@ Factors that can influence the choice of sorting algorithm include performance, 
 
 Therefore, there are many different sorting algorithms to choose from, each with its own unique characteristics, to provide a variety of options for different use cases.
 
-#### Bubble Sort
+### Bubble Sort
 
 Bubble Sort is a simple sorting algorithm that repeatedly steps through a list of elements, compares adjacent elements and swaps them if they are in the wrong order.
 
@@ -924,7 +925,7 @@ bubble_sort(numbers)
 print(numbers)  # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
 ```
 
-#### Selection Sort
+### Selection Sort
 
 Selection Sort is another simple sorting algorithm that repeatedly finds the smallest element in an unsorted portion of an array and moves it to the beginning of the sorted portion of the array.
 
@@ -961,7 +962,7 @@ selection_sort(numbers)
 print(numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
 ```
 
-#### Insertion Sort
+### Insertion Sort
 
 Insertion Sort is also another simple sorting algorithm that works by iteratively inserting each element of an array into its correct position within a sorted subarray.
 
@@ -998,7 +999,7 @@ insertion_sort(numbers)
 print(numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
 ```
 
-#### Divide and Conquer
+### Divide and Conquer
 
 The divide-and-conquer paradigm is a problem-solving strategy that involves breaking down a problem into smaller subproblems, solving each subproblem independently, and then combining the solutions into a final solution for the original problem.
 
@@ -1016,7 +1017,7 @@ It is especially useful for problems that can be broken down into smaller, indep
 
 The divide-and-conquer paradigm can be a powerful tool for solving complex problems efficiently, but it requires careful consideration of how to divide the problem into subproblems and how to combine the solutions of those subproblems.
 
-#### Merge Sort
+### Merge Sort
 
 Merge Sort is a popular sorting algorithm that follows the divide-and-conquer paradigm. It works by dividing the unsorted list into smaller sublists, sorting those sublists recursively, and then merging them back together into the final sorted list.
 
@@ -1074,7 +1075,7 @@ sorted_numbers = merge_sort(numbers)
 print(sorted_numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
 ```
 
-#### Quick Sort
+### Quick Sort
 
 Quick Sort is another popular sorting algorithm that uses the divide-and-conquer paradigm. It works by selecting a pivot element from the array, partitioning the array into two subarrays based on the pivot element, and then recursively sorting each subarray.
 
@@ -1127,7 +1128,7 @@ quick_sort(numbers, 0, len(numbers) - 1)
 print(numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
 ```
 
-#### Selecting a Sorting Algorithm
+### Selecting a Sorting Algorithm
 
 When selecting a sorting algorithm, it is important to consider various factors such as the size and distribution of the dataset, as well as the desired time and space complexity.
 
@@ -1179,7 +1180,7 @@ The time complexity of linear search is O(n), where n is the number of elements 
 
 Linear search is a simple and easy-to-understand algorithm, but it is not very efficient for large collections. It is best suited for small collections or for situations where the collection is unsorted or constantly changing.
 
-#### Binary Search
+### Binary Search
 
 Binary search algorithm is a searching algorithm used for finding an element in a sorted collection. The algorithm works by repeatedly dividing the collection in half and checking if the desired element is in the left or right half.
 
@@ -1263,7 +1264,7 @@ graph = {
 print(bfs_graph(graph, 'A'))  # Output: ['A', 'B', 'C', 'D', 'E', 'F']
 ```
 
-#### DFS (Depth-First Search)
+### DFS (Depth-First Search)
 
 Depth-First Search (DFS) is a traversal algorithm that starts at a specified node and explores as far as possible along each branch before backtracking. It uses a stack data structure to keep track of the nodes to be visited next.
 
@@ -1282,18 +1283,6 @@ Depth-First Search (DFS) is a traversal algorithm that starts at a specified nod
 ![DFS](images/dfs.png)
 
 DFS explores all the nodes in a branch before backtracking to explore other branches. This makes it useful for exploring all the nodes in a graph and for detecting cycles in a graph. DFS can also be used to find a path between two nodes in a graph.
-
-There are three types of DFS traversal:
-
-- **In-Order**
-- **Pre-Order**
-- **Post-Order**
-
-**In-Order** traversal visits the left subtree, then the current node, and then the right subtree.
-
-**Pre-Order** traversal visits the current node, then the left subtree, and then the right subtree.
-
-**Post-Order** traversal visits the left subtree, then the right subtree, and then the current node.
 
 The time complexity of DFS is O(V+E), where V is the number of vertices and E is the number of edges in the graph. The space complexity of DFS is O(V), as it needs to keep track of all the visited nodes and the nodes in the stack.
 
