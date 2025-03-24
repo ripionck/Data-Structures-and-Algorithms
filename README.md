@@ -354,8 +354,6 @@ The data in a tree are not stored in a sequential manner i.e, they are not store
 
 For this reason, the tree is considered to be a non-linear data structure.
 
-[Back to Top](#table-of-contents)
-
 ### Binary Trees
 
 A binary tree is a tree data structure composed of nodes, each of which has at most, two children, referred to as left and right nodes. The tree starts off with a single node known as the root.
@@ -390,7 +388,8 @@ A complete binary tree is just like a full binary tree, but with two major diffe
 1. All the leaf elements must lean towards the left.
 2. The last leaf element might not have a right sibling i.e. a complete binary tree doesn't have to be a full binary tree.
 
-**Binary Search Tree**
+### Binary Search Tree
+
 A Binary Search Tree is a binary tree where each node contains a key and an optional associated value. It allows particularly fast lookup, addition, and removal of items.
 
 The nodes are arranged in a binary search tree according to the following properties:
@@ -398,6 +397,119 @@ The nodes are arranged in a binary search tree according to the following proper
 1. The left subtree of a particular node will always contain nodes with keys less than that node’s key.
 2. The right subtree of a particular node will always contain nodes with keys greater than that node’s key.
 3. The left and the right subtree of a particular node will also, in turn, be binary search trees.
+
+![Binary Search Tree](images/binary-search-tree.png)
+
+### Time Complexity
+
+In average cases, the above mentioned properties enable the insert, search and deletion operations in O(log n) time where n is the number of nodes in the tree.
+
+However, the time complexity for these operations is O(n) in the worst case when the tree becomes unbalanced.
+
+### Space Complexity
+
+The space complexity of a binary search tree is O(n) in both the average and the worst cases.
+
+### Balanced vs. Unbalanced BST
+
+A binary tree is called balanced if every leaf node is not more than a certain distance away from the root than any other leaf.
+
+That is, if we take any two leaf nodes (including empty nodes), the distance between each node and the root is approximately the same.
+
+In most cases, "approximately the same" means that the difference between the two distances (root to first leaf and root to second leaf) is not greater than 1, but the exact number can vary from application to application.
+
+This distance constraint ensures that it takes approximately the same amount of time to reach any leaf node in a binary tree from the root. A linked list is a kind of maximally-unbalanced binary tree.
+
+![Balanced vs. Unbalanced BST](images/balanced-unbalanced-BST.png)
+
+**Binary Search Tree Good at:**
+
+- Better than O(n)
+- Ordered
+- Flexible Size
+
+**Binary Search Tree Bad at:**
+
+- No O(1) operations
+
+### Balancing a Binary Search Tree
+
+The primary issue with binary search trees is that they can be unbalanced. In the worst case, they are still not more efficient than a linked list, performing operations such as insertions, deletions, and searches in O(n) time.
+
+![AVL & RED Black Tree](avl-red-black.png)
+
+**AVL Trees**
+
+AVL trees are a modification of binary search trees that resolve this issue by maintaining the balance factor of each node.
+
+**Red-Black Trees**
+
+The red-black tree is another member of the binary search tree family. Like the AVL tree, a red-black tree has self-balancing properties.
+
+### Binary Heap
+
+The binary heap is a binary tree (a tree in which each node has at most two children) which satisfies the following additional properties:
+
+1. The binary tree is complete, i.e. every level except the bottom-most level is completely filled and nodes of the bottom-most level are positioned as left as possible.
+
+2. A Binary Heap is either Min Heap or Max Heap. In a Min Binary Heap, the key at root must be minimum among all keys present in Binary Heap. The same property must be recursively true for all nodes in Binary Tree. Max Binary Heap is similar to MinHeap.
+
+![Binary Heap](images/binary-heap.png)
+
+Notice that the binary tree does not enforce any ordering between the sibling nodes.
+
+Also notice that the completeness of the tree ensures that the height of the tree is log(n)⁡, where n is the number of elements in the heap. The nodes in the binary heap are sorted with the priority queue method.
+
+### Priority Queue
+
+A priority queue is a special type of queue in which each element is associated with a priority value. And, elements are served on the basis of their priority. That is, higher priority elements are served first.
+
+However, if elements with the same priority occur, they are served according to their order in the queue.
+
+**Assigning Priority Value**
+Generally, the value of the element itself is considered for assigning the priority. For example, The element with the highest value is considered the highest priority element.
+
+However, in other cases, we can assume the element with the lowest value as the highest priority element. We can also set priorities according to our needs.
+
+![Priority Value](images/priority-value.png)
+
+### Priority Queue vs. Normal Queue
+
+In a queue, the first-in-first-out rule is implemented whereas, in a priority queue, the values are removed on the basis of priority. The element with the highest priority is removed first.
+
+**Binary Heap Good at:**
+
+- Better than O(n)
+- Priority
+- Flexible Size
+- Fast Insert
+
+**Binary Heap Bad at:**
+
+- Slow Lookup
+
+### Trie or Prefix Tree or Radix Tree or Digital Tree
+
+A trie is a special tree that can compactly store strings. Here's a trie that stores ‘this’, ‘there’, ‘that’, ‘does’, ‘did’.
+
+![Trie Tree](images/trie-tree.png)
+
+Notice that we only store "there" once, even though it appears in two strings: "that" and "this".
+
+**Trie Strengths:**
+
+- Sometimes Space-Efficient. If you're storing lots of words that start with similar patterns, tries may reduce the overall storage cost by storing shared prefixes once.
+- Efficient Prefix Queries. Tries can quickly answer queries about words with shared prefixes, like:
+  - How many words start with "choco"?
+  - What's the most likely next letter in a word that starts with "strawber"?
+
+**Trie Weaknesses:**
+
+- Usually Space-Inefficient. Tries rarely save space when compared to storing strings in a set.
+  - ASCII characters in a string are one byte each. Each link between trie nodes is a pointer to an address—eight bytes on a 64-bit system. So, the overhead of linking nodes together often outweighs the savings from storing fewer characters.
+- Not Standard. Most languages don't come with a built-in trie implementation. You'll need to implement one yourself.
+
+**Tries Time Complexity:** O (length of the word)
 
 [Back to Top](#table-of-contents)
 
