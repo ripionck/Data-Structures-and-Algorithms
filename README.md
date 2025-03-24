@@ -1499,13 +1499,13 @@ Finds shortest paths in graphs **with negative weights** and detects negative cy
 2. **Relax edges**: Update distances for all edges **V-1** times.
 3. **Negative cycle check**: Validate if further distance reductions occur after **V-1** iterations.
 
-![Bellman-Ford Algorithm](bellman-ford01.png)
-![Bellman-Ford Algorithm](bellman-ford011.png)
-![Bellman-Ford Algorithm](bellman-ford012.png)
-![Bellman-Ford Algorithm](bellman-ford013.png)
-![Bellman-Ford Algorithm](bellman-ford014.png)
-![Bellman-Ford Algorithm](bellman-ford015.png)
-![Bellman-Ford Algorithm](bellman-ford016.png)
+![Bellman-Ford Algorithm](images/bellman-ford01.png)
+![Bellman-Ford Algorithm](images/bellman-ford011.png)
+![Bellman-Ford Algorithm](images/bellman-ford012.png)
+![Bellman-Ford Algorithm](images/bellman-ford013.png)
+![Bellman-Ford Algorithm](images/bellman-ford014.png)
+![Bellman-Ford Algorithm](images/bellman-ford015.png)
+![Bellman-Ford Algorithm](images/bellman-ford016.png)
 
 ```python
 def bellman_ford(V, edges, src):
