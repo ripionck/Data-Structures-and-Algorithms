@@ -369,19 +369,23 @@ A binary tree is a tree data structure composed of nodes, each of which has at m
 
 ### Types Of Binary Trees
 
-![Types of binary tree](images/binary-tree-types.png)
-
 **Full Binary Tree**
 
 A full Binary tree is a special type of binary tree in which every parent node/internal node has either two or no children.
+
+![Full Binary Tree ](images/full-binary-tree.png)
 
 **Perfect Binary Tree**
 
 A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.
 
+![Perfect Binary Tree](images/perfect-binary-tree.png)
+
 **Complete Binary Tree**
 
 A complete binary tree is a binary tree in which all the levels are completely filled except possibly the lowest one, which is filled from the left.
+
+![Complete Binary Tree](images/complete-binary-tree.png)
 
 A complete binary tree is just like a full binary tree, but with two major differences:
 
@@ -515,7 +519,57 @@ Notice that we only store "there" once, even though it appears in two strings: "
 
 ### Graphs
 
-A collection of nodes (vertices) connected by edges.
+The Graph data structure is a collection of nodes. But unlike with trees, there are no rules about how nodes should be connected. There are no root, parent, or child nodes. Also, nodes are called vertices and they are connected by edges.
+
+![Graph](images/graph.png)
+
+Usually, graphs have more edges than vertices. Graphs with more edges than vertices are called dense graphs. If there are fewer edges than vertices, then it’s a sparse graph.
+
+In some graphs, the edges are directional. These are known as directed graphs or digraphs.
+
+Graphs are considered to be connected if there is a path from each vertex to another.
+
+Graphs whose edges are all bidirectional are called undirected graphs, unordered graphs, or just graphs. These types of graphs have no implied direction on edges between the nodes. Edge can be traversed in either direction.
+
+By default, graphs are assumed to be unordered.
+
+![Undirected and Directed Graphs](images/undirected-directed-graph.png)
+
+In some graphs, edges can have a weight. These are called weighted graphs. So, when I say edges have a weight, what I mean to say is that they have some numbers which typically shows the cost of traversing in a graph.
+
+When we are concerned with the minimum cost of traversing the graph then what we do is we find the path that has the least sum of those weights.
+
+![Unweighted and Weighted Graphs](images/unweighted-weighted-graph.png)
+
+Cyclic graphs are a sort of graph in which the starting vertex also serves as the final vertex. Trees are a special type of graph that includes a path from the starting vertex (the root) to some other vertex. Therefore, trees are Acyclic Graphs.
+
+![Cyclic and Acyclic Graphs](images/cyclic-acyclic-graph.png)
+
+### Representing Graphs
+
+A graph can be represented using 3 data structures- **adjacency matrix**, **adjacency list** and **Edge List**.
+
+An **adjacency matrix** can be thought of as a table with rows and columns. The row labels and column labels represent the nodes of a graph. An adjacency matrix is a square matrix where the number of rows, columns and nodes are the same. Each cell of the matrix represents an edge or the relationship between two given nodes.
+
+![Adjacency Matrix](images/adjacency-matrix.png)
+
+In **adjacency list** representation of a graph, every vertex is represented as a node object. The node may either contain data or a reference to a linked list. This linked list provides a list of all nodes that are adjacent to the current node.
+
+![Adjacency List](images/adjacency-list.png)
+
+The **Edge List** is another way to represent adjacent vertices. It is much more efficient when trying to figure out the adjacent nodes in a graph. The edge list contains a list of edges in alphanumerical order.
+
+|                                      |                                      |
+| ------------------------------------ | ------------------------------------ |
+| ![Edge List](images/edge-list01.png) | ![Edge List](images/edge-list02.png) |
+
+**Graphs Good at:**
+
+- Relationships
+
+**Graphs Bad at:**
+
+- Scaling is hard
 
 [Back to Top](#table-of-contents)
 
