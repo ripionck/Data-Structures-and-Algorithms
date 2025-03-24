@@ -576,19 +576,162 @@ The **Edge List** is another way to represent adjacent vertices. It is much more
 
 ### What is an Algorithm?
 
-A step-by-step procedure for solving a problem or performing a computation.
+An algorithm is a set of instructions or a step-by-step procedure used to solve a problem or perform a specific task.
 
-[Back to Top](#table-of-contents)
+In computer science, algorithms are typically used to solve computational problems, such as sorting a list of numbers, searching for a particular item in a database, or calculating the shortest path between two points on a graph.
+
+### When do I need to use Algorithms?
+
+They are used whenever you need to perform a specific task that can be broken down into smaller, well-defined steps.
+
+**Some examples of situations where you might use algorithms include:**
+
+- Sorting data
+- Searching for information
+- Calculating mathematical functions
+- Optimizing performance
+- Machine learning
+
+Algorithms are typically evaluated based on their efficiency, expressed in terms of time complexity and space complexity.
+
+**Time complexity** refers to the amount of time required for the algorithm to produce the output.
+
+**Space complexity** refers to the amount of memory or storage required by the algorithm.
+
+Efficient algorithms are important because they allow us to solve problems quickly and with fewer resources.
+
+In some cases, the difference between an efficient algorithm and an inefficient algorithm can be the difference between a problem being solvable and unsolvable.
+
+Overall, algorithms are a fundamental concept in computer science and are used extensively in software development, data analysis, and many other fields.
 
 ### Recursion
 
-A method where a function calls itself to solve smaller instances of the same problem.
+Recursion is a fundamental concept in programming when learning about data structures and algorithms. So, what exactly is recursion?
 
-[Back to Top](#table-of-contents)
+The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called a recursive function.
+
+Recursive algorithm is essential to divide and conquer paradigm, whereby the idea is to divide bigger problems into smaller subproblems and the subproblem is some constant fraction of the original problem.
+
+The way recursion works is by solving the smaller subproblems individually and then aggregating the results to return the final solution.
+
+![Recursion](images/recursion.png)
 
 ### Stack Overflow
 
-An error that occurs when the call stack exceeds its limit, often due to infinite recursion.
+So what happens if you keep calling functions that are nested inside each other? When this happens, it’s called a stack overflow. And that is one of the challenges you need to overcome when it comes to recursion and recursive algorithms.
+
+![Stack Overflow](images/stack-overflow.png)
+
+```python
+// When a function calls itself,
+// it is called RECURSION
+def inception():
+    inception()
+
+inception()
+// returns Uncaught RangeError:
+// Maximum call stack size exceeded
+```
+
+### Avoiding Stack Overflow
+
+In order to prevent stack overflow bugs, you must have a base case where the function stops making new recursive calls.
+
+If there is no base case then the function calls will never stop and eventually a stack overflow will occur.
+
+Here is an example of a recursive function with a base case. The base case is when the counter becomes bigger than 3.
+
+```python
+counter = 0
+def inception():
+    global counter
+    print(counter)
+    if counter > 3:
+        return 'done!'
+    counter += 1
+    return inception()
+
+print(inception())
+```
+
+This program does not have a stack overflow error because once the counter is set to 4, the if statement’s condition will be True and the function will return ‘done!’, and then the rest of the calls will also return ‘done!’ in turn.
+
+```python
+# Write two functions that find the factorial of any
+# number. One should use recursive, the other should just
+# use a for loop
+
+# Iterative factorial (using for loop)
+def find_factorial_iterative(num):  # O(n)
+    res = num
+    for i in range(num, 1, -1):  # from num down to 2
+        res = res * (i - 1)
+    return res
+
+# Recursive factorial
+def find_factorial_recursive(num):  # O(n)
+    if num == 2:
+        return 2
+    return num * find_factorial_recursive(num - 1)
+
+print(find_factorial_iterative(3))  # Output: 6
+print(find_factorial_recursive(3))  # Output: 6
+```
+
+![Factorial](images/factorial.png)
+
+```python
+
+# Given a number N return the index value of the Fibonacci
+# sequence, where the sequence is:
+
+# o, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 ...
+# the pattern of the sequence is that each value is the sum of
+# the 2 previous values, that means that for N=5 -> 2+3
+
+# Iterative Fibonacci (O(n) time, O(n) space)
+def fibonacci_iterative(n):
+    fib = [0, 1]
+    for i in range(2, n + 1):
+        fib.append(fib[i-2] + fib[i-1])
+    print(fib[n])
+    return fib[n]
+
+# Recursive Fibonacci (O(2^n) time, O(n) space)
+def fibonacci_recursive(n):
+    if n < 2:
+        return n
+    return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+
+# Testing the functions
+print(fibonacci_iterative(5))  # Output: 5 (sequence: 0,1,1,2,3,5)
+print(fibonacci_recursive(5))  # Output: 5
+```
+
+![fibonacci](images/fibonacci.png)
+
+### Recursion vs. Iteration
+
+| Feature           | Recursion                                    | Iteration                             |
+| ----------------- | -------------------------------------------- | ------------------------------------- |
+| **Structure**     | Uses selection structure (function calls)    | Uses repetition structure (loops)     |
+| **Termination**   | Terminates when base case is met             | Terminates when loop condition fails  |
+| **Infinite Case** | Crashes with stack overflow                  | Continuously uses CPU cycles          |
+| **Performance**   | Slower (stack overhead)                      | Faster (no stack operations)          |
+| **Memory Usage**  | Higher (stack frames accumulate)             | Lower (fixed memory usage)            |
+| **Code Size**     | Typically more concise                       | Typically more verbose                |
+| **Best For**      | Problems with recursive nature (trees, etc.) | Simple repetitive tasks               |
+| **Readability**   | Often more elegant for recursive problems    | More straightforward for simple loops |
+| **Debugging**     | Harder (stack traces can be deep)            | Easier (linear execution flow)        |
+
+**Recursion Good at:**
+
+- DRY
+- Readability
+
+**Recursion Bad at:**
+
+- Large Stack
 
 [Back to Top](#table-of-contents)
 
