@@ -36,7 +36,7 @@
   - [Find Insertion Index](#find-insertion-index)
   - [First and Last Occurrence of Number](#first-and-last-occurrence-of-number)
   - [Cutting Wood](#cutting-wood)
-- [Determine if current value of H cuts at least k meters of wood](#determine-if-current-value-of-h-cuts-at-least-k-meters-of-wood)
+- [Determine if the current value of H cuts at least k meters of wood](#determine-if-current-value-of-h-cuts-at-least-k-meters-of-wood)
   - [Find target in rotated sorted array](#find-target-in-rotated-sorted-array)
   - [Find Median From Two Sorted Arrays](#find-median-from-two-sorted-arrays)
   - [Matrix Search](#matrix-search)
@@ -72,7 +72,7 @@
     - [Recursive](#recursive)
     - [Iteration](#iteration)
   - [Balanced Binary Tree Validation](#balanced-binary-tree-validation)
-  - [Rightmost nodes of binary tree](#rightmost-nodes-of-binary-tree)
+  - [Rightmost nodes of a binary tree](#rightmost-nodes-of-binary-tree)
   - [Widest Binary Tree Level](#widest-binary-tree-level)
   - [Binary Search Tree Validation](#binary-search-tree-validation)
   - [Lowest Common Ancestor (LCA)](#lowest-common-ancestor-lca)
@@ -121,7 +121,7 @@
     - [Optimization](#optimization-1)
   - [Longest Palindrome in String](#longest-palindrome-in-string)
   - [Max Subarray Sum](#max-subarray-sum)
-  - [/1 Knapsack](#1-knapsack)
+  - [0/1 Knapsack](#0-1-knapsack)
   - [Largest Square in Matrix](#largest-square-in-matrix)
     - [Optimization](#optimization-2)
 - [Char 16 Greedy](#char-16-greedy)
@@ -2972,7 +2972,7 @@ def max_subarray_sum_dp_optimized(nums: List[int]) -> int:
 
 <!-- TOC --><a name="01-knapsack"></a>
 
-## 0/1 Knapsack
+## 0-1-knapsack
 
 ```python
 def knapsack(cap: int, weights: List[int], values: List[int]) -> int:
