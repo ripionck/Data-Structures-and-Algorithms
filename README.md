@@ -513,6 +513,117 @@ Notice that we only store "there" once, even though it appears in two strings: "
 
 **Tries Time Complexity:** O (length of the word)
 
+## Tree Traversal
+
+Tree traversal algorithms systematically visit each node in a tree data structure. The four primary traversal methods are categorized into **depth-first search (DFS)** and **breadth-first search (BFS)**. Below is a breakdown of each method, including steps and Python implementations.
+
+---
+
+## **1. Inorder Traversal (DFS)**
+
+Visits nodes in the order: **Left Subtree → Root → Right Subtree**.  
+**Use Case**: Returns nodes of a binary search tree in sorted order[1][3].
+
+### Steps:
+
+1. Recursively traverse the left subtree.
+2. Visit the current node.
+3. Recursively traverse the right subtree.
+
+```python
+def inorder(root):
+    if root:
+        inorder(root.leftChild)
+        print(root.data)
+        inorder(root.rightChild)
+```
+
+---
+
+## **2. Preorder Traversal (DFS)**
+
+Visits nodes in the order: **Root → Left Subtree → Right Subtree**.  
+**Use Case**: Creates tree copies or generates prefix expressions[1][4].
+
+### Steps:
+
+1. Visit the current node.
+2. Recursively traverse the left subtree.
+3. Recursively traverse the right subtree.
+
+```python
+def preorder(root):
+    if root:
+        print(root.data)
+        preorder(root.leftChild)
+        preorder(root.rightChild)
+```
+
+---
+
+## **3. Postorder Traversal (DFS)**
+
+Visits nodes in the order: **Left Subtree → Right Subtree → Root**.  
+**Use Case**: Deletes nodes safely from a tree.
+
+### Steps:
+
+1. Recursively traverse the left subtree.
+2. Recursively traverse the right subtree.
+3. Visit the current node.
+
+```python
+def postorder(root):
+    if root:
+        postorder(root.leftChild)
+        postorder(root.rightChild)
+        print(root.data)
+```
+
+---
+
+## **4. Level Order Traversal (BFS)**
+
+Visits nodes **level by level**, from left to right.  
+**Use Case**: Hierarchical data processing.
+
+### Steps:
+
+1. Use a queue to track nodes.
+2. Enqueue the root node.
+3. Dequeue a node, print it, and enqueue its children (left first, then right).
+4. Repeat until the queue is empty.
+
+```python
+from queue import Queue
+
+def levelorder(root):
+    if not root:
+        return
+    q = Queue()
+    q.put(root)
+    while not q.empty():
+        node = q.get()
+        print(node.data)
+        if node.leftChild:
+            q.put(node.leftChild)
+        if node.rightChild:
+            q.put(node.rightChild)
+```
+
+---
+
+### **Key Differences**
+
+| Traversal Type | Order               | Category | Use Case Example             |
+| -------------- | ------------------- | -------- | ---------------------------- |
+| Inorder        | Left → Root → Right | DFS      | Sorting BST nodes            |
+| Preorder       | Root → Left → Right | DFS      | Copying trees                |
+| Postorder      | Left → Right → Root | DFS      | Deleting nodes safely        |
+| Level Order    | Level-by-level      | BFS      | Processing hierarchical data |
+
+For binary trees, DFS-based traversals (inorder, preorder, postorder) use recursion or stacks, while BFS (level order) relies on queues. Each method serves distinct purposes depending on the required node processing sequence.
+
 [Back to Top](#table-of-contents)
 
 ### Graphs
@@ -604,7 +715,7 @@ In some cases, the difference between an efficient algorithm and an inefficient 
 
 Overall, algorithms are a fundamental concept in computer science and are used extensively in software development, data analysis, and many other fields.
 
-### Recursion
+## Recursion
 
 Recursion is a fundamental concept in programming when learning about data structures and algorithms. So, what exactly is recursion?
 
@@ -733,128 +844,915 @@ print(fibonacci_recursive(5))  # Output: 5
 
 - Large Stack
 
+**When do I need to use Recursion?**
+
+Every time you are using a tree or converting Something into a tree, consider Recursion.
+
+1. Divided into a number of subproblems that are smaller instances of the same problem.
+2. Each instance of the subproblem is identical in nature.
+3. The solutions of each subproblem can be combined to solve the problem at hand.
+
 [Back to Top](#table-of-contents)
 
 ### Sorting Algorithms
 
+A sorting algorithm is used to arrange elements of an array/list in a specific order.
+
+Sorts are most commonly in numerical or a form of alphabetical (or lexicographical) order, and can be in ascending (A-Z, 0-9) or descending (Z-A, 9-0) order.
+
+![Sorting Algorithm](images/sorting-algorithm.png)
+
+**What's all the fuss with sorting?**
+
+1. Sorting algorithms are important because they make it easier and faster to access and process data
+2. They are a fundamental part of computer science and good programming practice
+3. They can be used to optimize many different operations
+4. They have numerous real-world applications in fields such as database management and finance.
+
+Overall, understanding and using sorting algorithms effectively can help improve the performance and efficiency of software systems and data processing operations.
+
+**Why then can't we just use the sort() method that is already built in?**
+
+While the sort() method is a convenient built-in method provided by many programming languages to sort elements, it may not always be the best solution.
+
+- The performance of sort() can vary depending on the size and type of data being sorted
+- It may not maintain the order of equal elements
+- It may not provide the flexibility to customize sorting criteria
+- It may require additional memory to sort large datasets.
+
+Therefore, in some cases, other sorting algorithms or custom sorting functions may be more efficient or appropriate.
+
+**Why are there so many different sorting algorithms?**
+
+There are many different sorting algorithms because each algorithm has its own strengths and weaknesses, and may be more appropriate for certain types of data or situations.
+
+Factors that can influence the choice of sorting algorithm include performance, stability, in-place sorting, data distribution, and implementation complexity.
+
+Therefore, there are many different sorting algorithms to choose from, each with its own unique characteristics, to provide a variety of options for different use cases.
+
 #### Bubble Sort
 
-A simple sorting algorithm that repeatedly swaps adjacent elements if they are in the wrong order.
+Bubble Sort is a simple sorting algorithm that repeatedly steps through a list of elements, compares adjacent elements and swaps them if they are in the wrong order.
 
-[Back to Top](#table-of-contents)
+The algorithm gets its name from the way smaller elements "bubble" to the top of the list with each iteration.
+
+**Here are the basic steps of the Bubble Sort algorithm:**
+
+1. Starting at the beginning of the list, compare each pair of adjacent elements.
+2. If the elements are in the wrong order (e.g., the second element is smaller than the first), swap them.
+3. Continue iterating through the list until no more swaps are needed (i.e., the list is sorted).
+
+![Bubble Sort](images/bubble-sort.png)
+
+The list is now sorted. Bubble Sort has a time complexity of **O(n²)**, making it relatively slow for large datasets.
+
+However, it is easy to understand and implement, and can be useful for small datasets or as a starting point for more optimized sorting algorithms.
+
+```python
+numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]
+
+def bubble_sort(array):
+    n = len(array)
+    for i in range(n):
+        # Last i elements are already in place
+        for j in range(n - 1):
+            if array[j] > array[j + 1]:
+                # Swap elements
+                array[j], array[j + 1] = array[j + 1], array[j]
+
+bubble_sort(numbers)
+print(numbers)  # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
+```
 
 #### Selection Sort
 
-A sorting algorithm that selects the smallest element and swaps it with the first unsorted element.
+Selection Sort is another simple sorting algorithm that repeatedly finds the smallest element in an unsorted portion of an array and moves it to the beginning of the sorted portion of the array.
 
-[Back to Top](#table-of-contents)
+**Here are the basic steps of the Selection Sort algorithm:**
+
+1. Starting with the first element in the array, search for the smallest element in the unsorted portion of the array.
+2. Swap the smallest element found in step 1 with the first element in the unsorted portion of the array, effectively moving the smallest element to the beginning of the sorted portion of the array.
+3. Repeat steps 1 and 2 for the remaining unsorted elements in the array until the entire array is sorted.
+
+![Selection Sort](images/selection-sort.png)
+
+The array is now sorted. Selection Sort has a time complexity of **O(n²)**, making it relatively slow for large datasets.
+
+However, it is easy to understand and implement, and can be useful for small datasets or as a starting point for more optimized sorting algorithms.
+
+```python
+numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]
+
+def selection_sort(array):
+    length = len(array)
+    for i in range(length):
+        # Set current index as minimum
+        min_index = i
+        temp = array[i]
+        for j in range(i+1, length):
+            if array[j] < array[min_index]:
+                # Update minimum if current is lower
+                min_index = j
+        # Swap the found minimum element with the first element
+        array[i], array[min_index] = array[min_index], array[i]
+    return array
+
+selection_sort(numbers)
+print(numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
+```
 
 #### Insertion Sort
 
-A sorting algorithm that builds the final sorted array one item at a time.
+Insertion Sort is also another simple sorting algorithm that works by iteratively inserting each element of an array into its correct position within a sorted subarray.
 
-[Back to Top](#table-of-contents)
+**Here are the basic steps of the Insertion Sort algorithm:**
+
+1. Starting with the second element in the array, iterate through the unsorted portion of the array.
+2. For each element, compare it to the elements in the sorted portion of the array and insert it into the correct position.
+3. Repeat step 2 for all remaining elements in the unsorted portion of the array until the entire array is sorted.
+
+![Insertion Sort](images/insertion-sort.png)
+
+Insertion Sort has a time complexity of **O(n²)**, making it relatively slow for large datasets.
+
+However, it is efficient for sorting small datasets and is often used as a building block for more complex sorting algorithms.
+
+Additionally, Insertion Sort has a relatively low space complexity, making it useful in situations where memory usage is a concern.
+
+```python
+numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]
+
+def insertion_sort(array):
+    length = len(array)
+    for i in range(1, length):  # Start from 1 as first element is trivially sorted
+        current = array[i]
+        # Move elements that are greater than current to one position ahead
+        j = i - 1
+        while j >= 0 and current < array[j]:
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = current
+    return array
+
+insertion_sort(numbers)
+print(numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
+```
 
 #### Divide and Conquer
 
-A problem-solving paradigm that breaks a problem into smaller subproblems.
+The divide-and-conquer paradigm is a problem-solving strategy that involves breaking down a problem into smaller subproblems, solving each subproblem independently, and then combining the solutions into a final solution for the original problem.
 
-[Back to Top](#table-of-contents)
+**The basic steps of the divide-and-conquer paradigm are:**
+
+1. Divide the problem into smaller subproblems.
+2. Conquer each subproblem by solving them recursively or iteratively.
+3. Combine the solutions of the subproblems into a solution for the original problem.
+
+![Divide and Conquer](images/divide-and-conquer.png)
+
+This strategy is often used in computer science and mathematics to solve complex problems efficiently.
+
+It is especially useful for problems that can be broken down into smaller, independent subproblems, as it enables parallelization and can reduce the overall time complexity of the algorithm.
+
+The divide-and-conquer paradigm can be a powerful tool for solving complex problems efficiently, but it requires careful consideration of how to divide the problem into subproblems and how to combine the solutions of those subproblems.
 
 #### Merge Sort
 
-A divide-and-conquer algorithm that divides the array into halves, sorts them, and merges them.
+Merge Sort is a popular sorting algorithm that follows the divide-and-conquer paradigm. It works by dividing the unsorted list into smaller sublists, sorting those sublists recursively, and then merging them back together into the final sorted list.
 
-[Back to Top](#table-of-contents)
+**Here are the basic steps of the Merge Sort algorithm:**
+
+1. Divide the unsorted list into two sublists of roughly equal size.
+2. Sort each of the sublists recursively by applying the same divide-and-conquer strategy.
+3. Merge the sorted sublists back together into one sorted list.
+
+![Merge Sort](images/merge-sort.png)
+
+Merge Sort has a time complexity of **O(n log n)**, making it more efficient than quadratic sorting algorithms like Bubble Sort, Selection Sort, and Insertion Sort for large datasets.
+
+Additionally, Merge Sort is a stable sorting algorithm, meaning that it maintains the relative order of equal elements.
+
+However, Merge Sort has a relatively high space complexity due to its use of additional memory during the merging process.
+
+```python
+numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]
+
+def merge_sort(array):
+    if len(array) == 1:
+        return array
+
+    # Split array into right and left
+    middle = len(array) // 2
+    left = array[:middle]
+    right = array[middle:]
+
+    return merge(
+        merge_sort(left),
+        merge_sort(right)
+    )
+
+def merge(left, right):
+    result = []
+    left_index = 0
+    right_index = 0
+
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] < right[right_index]:
+            result.append(left[left_index])
+            left_index += 1
+        else:
+            result.append(right[right_index])
+            right_index += 1
+
+    # Add remaining elements
+    result.extend(left[left_index:])
+    result.extend(right[right_index:])
+
+    return result
+
+sorted_numbers = merge_sort(numbers)
+print(sorted_numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
+```
 
 #### Quick Sort
 
-A divide-and-conquer algorithm that selects a pivot and partitions the array around it.
+Quick Sort is another popular sorting algorithm that uses the divide-and-conquer paradigm. It works by selecting a pivot element from the array, partitioning the array into two subarrays based on the pivot element, and then recursively sorting each subarray.
 
-[Back to Top](#table-of-contents)
+**Here are the basic steps of the Quick Sort algorithm:**
+
+1. Choose a pivot element from the array.
+2. Partition the array into two subarrays: one containing elements smaller than the pivot element, and one containing elements larger than the pivot element.
+3. Recursively apply Quick Sort to each subarray until the entire array is sorted.
+
+![Quick Sort](images/quick-sort.png)
+
+Quick Sort has a time complexity of **O(n log n)** on average, making it one of the most efficient sorting algorithms for large datasets.
+
+However, in the worst case (e.g., when the pivot element always selects the maximum or minimum element of the array), Quick Sort can have a time complexity of **O(n²)**.
+
+This worst-case scenario can be avoided by selecting a good pivot element, such as the median or a random element.
+
+Additionally, Quick Sort is an in-place sorting algorithm, meaning that it does not require additional memory beyond the original array.
+
+```python
+numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]
+
+def quick_sort(array, left, right):
+    if left < right:
+        pivot = right
+        partition_index = partition(array, pivot, left, right)
+
+        # Sort left and right partitions
+        quick_sort(array, left, partition_index - 1)
+        quick_sort(array, partition_index + 1, right)
+    return array
+
+def partition(array, pivot, left, right):
+    pivot_value = array[pivot]
+    partition_index = left
+
+    for i in range(left, right):
+        if array[i] < pivot_value:
+            swap(array, i, partition_index)
+            partition_index += 1
+
+    swap(array, right, partition_index)
+    return partition_index
+
+def swap(array, first_index, second_index):
+    array[first_index], array[second_index] = array[second_index], array[first_index]
+
+
+quick_sort(numbers, 0, len(numbers) - 1)
+print(numbers) # [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
+```
 
 #### Selecting a Sorting Algorithm
 
-Guidelines for choosing the appropriate sorting algorithm based on the problem.
+When selecting a sorting algorithm, it is important to consider various factors such as the size and distribution of the dataset, as well as the desired time and space complexity.
+
+For large datasets with a relatively uniform distribution of values, **Quick Sort** and **Merge Sort** are generally good choices due to their efficient time complexity of O(n log n).
+
+However, Quick Sort may perform poorly if the pivot element is not chosen carefully, resulting in a worst-case time complexity of O(n²). Merge Sort is a stable sorting algorithm and has a space complexity of O(n).
+
+**Insertion Sort** is a good choice for small datasets or nearly sorted data, with a best-case time complexity of O(n) when the data is already sorted. However, its worst-case time complexity of O(n²) makes it less efficient for large datasets.
+
+**Selection Sort** and **Bubble Sort** have a time complexity of O(n²) and are generally less efficient than other sorting algorithms, especially for large datasets.
+
+In summary, the choice of sorting algorithm should be based on careful consideration of various factors, including the size and distribution of the dataset, as well as the desired time and space complexity.
+
+It is also important to test each sorting algorithm on the specific dataset to be sorted and compare their performance in terms of time and space complexity before making a final decision.
+
+**Comparison Sort Vs Non-Comparison Sort**
+
+**Comparison Sort algorithms** like Quick Sort, Merge Sort, Insertion Sort, Selection Sort, and Bubble Sort compare pairs of elements in the input array using comparison operators to determine their relative order.
+
+**Non-Comparison Sort algorithms** like Counting Sort, Radix Sort, and Bucket Sort do not compare elements, but instead use other information about the elements to determine their correct positions in the sorted output.
+
+Comparison Sort algorithms have a lower bound of O(n log n) time complexity, while Non-Comparison Sort algorithms can have a time complexity of O(n) in some cases.
+
+Comparison Sort algorithms are more widely used and can handle a wider range of input data, but Non-Comparison Sort algorithms can be more efficient when their assumptions about the input data are met.
 
 [Back to Top](#table-of-contents)
 
-### Searching Algorithms
+## Searching Algorithms
 
-#### Linear Search
+Searching algorithms are important in computer science and programming because they enable efficient data retrieval and processing.
 
-A simple search algorithm that checks each element sequentially.
+They provide time and resource efficiency, improve user experience, support better decision-making, and optimize the performance of more complex algorithms and data structures.
 
-[Back to Top](#table-of-contents)
+### Linear Search
+
+Linear search algorithm, also known as sequential search, is a simple searching algorithm that checks each element in a collection one by one until the desired element is found or the entire collection has been searched.
+
+**The steps involved in the linear search algorithm are as follows:**
+
+1. Start at the beginning of the collection.
+2. Compare the first element to the desired element.
+3. If the elements match, the search is complete and the index of the element is returned.
+4. If the elements do not match, move to the next element in the collection and repeat steps 2 and 3.
+5. The entire collection has been searched and the element has not been found, return a message indicating that the element is not in the collection.
+
+![Linear Search](images/linear-search.png)
+
+The time complexity of linear search is O(n), where n is the number of elements in the collection. This means that the time taken to search for an element increases linearly with the size of the collection.
+
+Linear search is a simple and easy-to-understand algorithm, but it is not very efficient for large collections. It is best suited for small collections or for situations where the collection is unsorted or constantly changing.
 
 #### Binary Search
 
-A search algorithm that works on sorted arrays by repeatedly dividing the search interval in half.
+Binary search algorithm is a searching algorithm used for finding an element in a sorted collection. The algorithm works by repeatedly dividing the collection in half and checking if the desired element is in the left or right half.
 
-[Back to Top](#table-of-contents)
+**The steps involved in the binary search algorithm are as follows:**
 
-#### BFS (Breadth-First Search)
+1. Start with the middle element of the collection.
+2. Compare the middle element to the desired element.
+3. If the middle element is equal to the desired element, the search is complete and the index of the element is returned.
+4. If the middle element is greater than the desired element, the search is conducted on the left half of the collection.
+5. If the middle element is less than the desired element, the search is conducted on the right half of the collection.
+6. Repeat steps 2-5 until the element is found or the search has been conducted on the entire collection.
 
-A graph traversal algorithm that explores all nodes at the present depth before moving deeper.
+![Binary Search](images/binary-search.png)
 
-[Back to Top](#table-of-contents)
+The time complexity of binary search is O(log n), where n is the number of elements in the collection. This means that the time taken to search for an element increases logarithmically with the size of the collection.
+
+Binary search is an efficient algorithm for searching in sorted collections, especially for large collections.
+
+However, it requires the collection to be sorted before the search begins. If the collection is unsorted, a sorting algorithm must be used before binary search can be applied.
+
+### Traversal vs. Searching
+
+Traversal involves visiting each element in a data structure and performing some operation on it, while search involves finding a specific element in a data structure based on some criteria.
+
+Traversal is often used to process or analyze the data in a data structure, while searching algorithms are used to efficiently find the desired element.
+
+### BFS (Breadth-First Search)
+
+Breadth-First Search (BFS) is a traversal algorithm that starts at a specified node and explores all the neighboring nodes at the current level before moving on to the next level. It uses a queue data structure to keep track of the nodes to be visited next.
+
+**The steps involved in the BFS algorithm are as follows:**
+
+1. Start at a specified node.
+2. Enqueue the node to a queue and mark it as visited.
+3. While the queue is not empty:
+
+- Dequeue a node from the front of the queue.
+- Visit the node and perform some operation on it.
+- Enqueue all the neighboring nodes that have not been visited before and mark them as visited.
+
+4. Repeat step 3 until the queue is empty.
+
+![BFS](images/bfs.png)
+
+BFS visits all the nodes at each level before moving on to the next level. This ensures that the shortest path between two nodes in an unweighted graph is found. BFS can also be used to find the minimum number of steps required to reach a node from the starting node.
+
+The time complexity of BFS is O(V+E), where V is the number of vertices and E is the number of edges in the graph. The space complexity of BFS is also O(V+E), as it needs to keep track of all the visited nodes and the nodes in the queue.
+
+BFS is a useful algorithm for finding the shortest path in an unweighted graph, and for exploring all the nodes in a graph that are reachable from a starting node.
+
+```python
+from collections import deque
+
+def bfs_graph(graph, start):
+    visited = set()
+    queue = deque([start])
+    visited.add(start)
+    result = []
+
+    while queue:
+        vertex = queue.popleft()
+        result.append(vertex)
+
+        for neighbor in graph[vertex]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+    return result
+
+
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+print(bfs_graph(graph, 'A'))  # Output: ['A', 'B', 'C', 'D', 'E', 'F']
+```
 
 #### DFS (Depth-First Search)
 
-A graph traversal algorithm that explores as far as possible along each branch before backtracking.
+Depth-First Search (DFS) is a traversal algorithm that starts at a specified node and explores as far as possible along each branch before backtracking. It uses a stack data structure to keep track of the nodes to be visited next.
 
-[Back to Top](#table-of-contents)
+**The steps involved in the DFS algorithm are as follows:**
 
-#### Selecting a Searching Algorithm
+1. Start at a specified node.
+2. Push the node to a stack and mark it as visited.
+3. While the stack is not empty:
 
-Guidelines for choosing the appropriate searching algorithm based on the problem.
+- Pop a node from the top of the stack.
+- Visit the node and perform some operation on it.
+- Push all the neighboring nodes that have not been visited before to the stack and mark them as visited.
+
+4. Repeat step 3 until the queue is empty.
+
+![DFS](images/dfs.png)
+
+DFS explores all the nodes in a branch before backtracking to explore other branches. This makes it useful for exploring all the nodes in a graph and for detecting cycles in a graph. DFS can also be used to find a path between two nodes in a graph.
+
+There are three types of DFS traversal:
+
+- **In-Order**
+- **Pre-Order**
+- **Post-Order**
+
+**In-Order** traversal visits the left subtree, then the current node, and then the right subtree.
+
+**Pre-Order** traversal visits the current node, then the left subtree, and then the right subtree.
+
+**Post-Order** traversal visits the left subtree, then the right subtree, and then the current node.
+
+The time complexity of DFS is O(V+E), where V is the number of vertices and E is the number of edges in the graph. The space complexity of DFS is O(V), as it needs to keep track of all the visited nodes and the nodes in the stack.
+
+DFS is a useful algorithm for exploring all the nodes in a graph and for detecting cycles in a graph. It can also be used to find a path between two nodes in a graph.
+
+```python
+def dfs_recursive(graph, node, visited=None, result=None):
+    if visited is None:
+        visited = set()
+    if result is None:
+        result = []
+
+    if node not in visited:
+        visited.add(node)
+        result.append(node)
+        for neighbor in graph[node]:
+            dfs_recursive(graph, neighbor, visited, result)
+
+    return result
+
+
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+print("Recursive DFS:", dfs_recursive(graph, 'A')) # Output: ['A', 'B', 'D', 'E', 'F', 'C']
+```
+
+### BFS vs. DFS
+
+| Feature              | BFS (Breadth-First Search)                                                               | DFS (Depth-First Search)                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **Approach**         | Explores level by level                                                                  | Explores branch by branch                                                       |
+| **Data Structure**   | Uses a queue                                                                             | Uses a stack (iterative) or recursion                                           |
+| **Memory Usage**     | More memory (stores all nodes at current level)                                          | Less memory (only stores current path)                                          |
+| **Time Complexity**  | O(V+E)                                                                                   | O(V+E)                                                                          |
+| **Space Complexity** | O(V) (worst-case)                                                                        | O(d) (d = maximum depth)                                                        |
+| **Use Cases**        | - Shortest path in unweighted graphs<br>- Web crawling<br>- Finding connected components | - Cycle detection<br>- Topological sorting<br>- Solving mazes<br>- Path finding |
+| **Best For**         | When target is close to source                                                           | When target is far from source                                                  |
+| **Completeness**     | Always finds shortest path                                                               | May not find shortest path                                                      |
+| **Optimality**       | Optimal for unweighted graphs                                                            | Not optimal for shortest path problems                                          |
+
+Note that while BFS and DFS have their own strengths and weaknesses, the actual performance of the algorithms may depend on the structure and size of the graph being traversed.
+
+**BFS Good at:**
+
+- Shortest Path
+- Closer Nodes
+
+**BFS Bad at:**
+
+- More Memory
+
+**DFS Good at:**
+
+- Less Memory
+- Does Path Exist?
+
+**DFS Bad at:**
+
+- Can Get Slow
+
+### Selecting a Searching Algorithm
+
+Linear search is recommended for small, unsorted data or when the order of the elements does not matter. It is a simple algorithm that checks each element of the collection until the target element is found or the end of the collection is reached.
+
+Linear search is easy to implement but can be inefficient for large collections since it has a time complexity of O(n), where n is the number of elements in the collection.
+
+Binary search is recommended for sorted data, as it takes advantage of the sorted order and uses a divide-and-conquer approach to find the target element. It repeatedly divides the search interval in half until the target element is found or the search interval is empty.
+
+Binary search has a time complexity of O(log n), which is much faster than linear search for large collections.
+
+BFS (Breadth-First Search) is recommended for finding the shortest path or distance between two nodes in a graph or tree.
+
+BFS explores all the nodes at the same level before moving to the next level. It uses a queue data structure to keep track of the nodes to be explored and has a time complexity of O(V+E), where V is the number of nodes and E is the number of edges in the graph.
+
+DFS (Depth-First Search) is recommended for exploring all the nodes in a graph or tree. DFS explores as far as possible along each branch before backtracking. It uses a stack data structure to keep track of the nodes to be explored and has a time complexity of O(V+E), where V is the number of nodes and E is the number of edges in the graph.
+
+In summary, the choice of the search algorithm depends on the properties of the data, the order of the elements, and the specific problem being solved. The time complexity of each algorithm should also be considered, as it can greatly impact the performance of the search.
 
 [Back to Top](#table-of-contents)
 
 ### Dijkstra and Bellman-Ford
 
-Algorithms for finding the shortest path in graphs.
+Another two algorithms for finding the shortest path between two nodes in a graph are the Bellman-Ford and Dijkstra algorithms.
 
-[Back to Top](#table-of-contents)
+Bellman-Ford can handle graphs with negative edge weights, while Dijkstra cannot.
 
-### Negative Edge Weights
+Bellman-Ford algorithm performs relaxation of all edges in the graph repeatedly until it finds the shortest path with a time complexity of O(VE), while Dijkstra algorithm maintains a priority queue of the next nodes to visit, with a time complexity of O((V+E)logV).
 
-Edge weights in graphs that can be negative, affecting certain algorithms.
+The choice between the two algorithms depends on the properties of the graph being searched.
 
-[Back to Top](#table-of-contents)
+If the graph has negative edge weights, Bellman-Ford should be used.
 
-### Relaxation
+If the graph has only non-negative edge weights, Dijkstra may be faster for sparse graphs.
 
-The process of updating the shortest path estimate for a vertex in graph algorithms.
-
-[Back to Top](#table-of-contents)
-
-### Sparse Graphs
-
-Graphs with relatively few edges compared to the number of vertices.
-
-[Back to Top](#table-of-contents)
-
-### Dynamic Programming
-
-A method for solving complex problems by breaking them into simpler subproblems.
-
-[Back to Top](#table-of-contents)
-
-### Caching
-
-Storing frequently accessed data in a temporary storage area for faster access.
-
-[Back to Top](#table-of-contents)
-
-### Memoization
-
-An optimization technique that stores the results of expensive function calls.
-
-[Back to Top](#table-of-contents)
+Dijkstra's and Bellman-Ford algorithms are fundamental for solving shortest-path problems in weighted graphs. Here's a structured comparison with implementations:
 
 ---
 
-## License
+## **Dijkstra's Algorithm**
 
-This project is open-source. Feel free to contribute or reuse as needed.
+Finds shortest paths from a source node in graphs **with non-negative weights**. Uses a greedy approach with a priority queue.
+
+### Steps:
+
+1. **Initialize distances**: Set source distance to 0, others to infinity.
+2. **Priority queue**: Track nodes by current shortest distance.
+3. **Node selection**: Extract the node with minimum distance.
+4. **Edge relaxation**: Update adjacent nodes' distances if a shorter path is found.
+5. **Repeat** until all nodes are processed.
+
+![Dijkstra's Algorithm](images/dijkstra220437.png)
+![Dijkstra's Algorithm](images/dijkstra220052.png)
+![Dijkstra's Algorithm](images/dijkstra220133.png)
+![Dijkstra's Algorithm](images/dijkstra220156.png)
+![Dijkstra's Algorithm](images/dijkstra220226.png)
+![Dijkstra's Algorithm](images/dijkstra220302.png)
+![Dijkstra's Algorithm](images/dijkstra220322.png)
+
+```python
+import heapq
+
+def dijkstra(graph, source, destination):
+    # Initialize distances with infinity and set source distance to 0
+    distances = {node: float('infinity') for node in graph}
+    distances[source] = 0
+
+    # Priority queue: (distance, node)
+    priority_queue = [(0, source)]
+
+    # Previous nodes to reconstruct the path
+    previous_nodes = {node: None for node in graph}
+
+    while priority_queue:
+        current_distance, current_node = heapq.heappop(priority_queue)
+
+        # If we've already found a better path, skip
+        if current_distance > distances[current_node]:
+            continue
+
+        # Check all neighbors
+        for neighbor, weight in graph[current_node].items():
+            distance = current_distance + weight
+
+            # If we found a shorter path to the neighbor
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                previous_nodes[neighbor] = current_node
+                heapq.heappush(priority_queue, (distance, neighbor))
+
+    # Reconstruct the shortest path
+    path = []
+    current = destination
+    while current is not None:
+        path.append(current)
+        current = previous_nodes[current]
+    path.reverse()
+
+    return distances[destination], path
+
+
+graph = {
+    'a': {'b': 5, 'c': 2},
+    'b': {'a': 5, 'c': 7, 'd': 8},
+    'c': {'a': 2, 'b': 7, 'd': 4, 'e': 8},
+    'd': {'b': 8, 'c': 4, 'e': 6, 'f': 4},
+    'e': {'c': 8, 'd': 6, 'f': 3},
+    'f': {'e': 3, 'd': 4}
+}
+
+source = 'a'
+destination = 'f'
+
+distance, path = dijkstra(graph, source, destination)
+print(f"Shortest distance from {source} to {destination}: {distance}")
+print(f"Path: {' -> '.join(path)}")
+
+# Output
+# Shortest distance from a to f: 11
+# Path: a -> c -> d -> f
+```
+
+**Key Features**:
+
+- Time Complexity: **O((V + E) log V)** where V is vertices and E is edges
+- Fails with negative edge weights
+
+---
+
+## **Bellman-Ford Algorithm**
+
+Finds shortest paths in graphs **with negative weights** and detects negative cycles.
+
+### Steps:
+
+1. **Initialize distances**: Source = 0, others = infinity.
+2. **Relax edges**: Update distances for all edges **V-1** times.
+3. **Negative cycle check**: Validate if further distance reductions occur after **V-1** iterations.
+
+![Bellman-Ford Algorithm](bellman-ford01.png)
+![Bellman-Ford Algorithm](bellman-ford011.png)
+![Bellman-Ford Algorithm](bellman-ford012.png)
+![Bellman-Ford Algorithm](bellman-ford013.png)
+![Bellman-Ford Algorithm](bellman-ford014.png)
+![Bellman-Ford Algorithm](bellman-ford015.png)
+![Bellman-Ford Algorithm](bellman-ford016.png)
+
+```python
+def bellman_ford(V, edges, src):
+    # Initialize distances from src to all other vertices as infinity
+    dist = [float('inf')] * V
+    dist[src] = 0
+
+    # Relax all edges |V| - 1 times
+    for _ in range(V - 1):
+        updated = False
+        for u, v, w in edges:
+            if dist[u] != float('inf') and dist[u] + w < dist[v]:
+                dist[v] = dist[u] + w
+                updated = True
+        if not updated:  # Early exit if no updates in a full pass
+            break
+
+    # Check for negative-weight cycles
+    for u, v, w in edges:
+        if dist[u] != float('inf') and dist[u] + w < dist[v]:
+            print("Graph contains negative weight cycle")
+            return None
+
+    return dist
+
+
+V = 5
+edges = [
+    [1, 3, 2],
+    [4, 3, -1],
+    [2, 4, 1],
+    [1, 2, 1],
+    [0, 1, 5]
+]
+src = 0
+
+result = bellman_ford(V, edges, src)
+
+if result:
+    print("Vertex Distance from Source")
+    for i in range(V):
+        print(f"{i}\t\t{result[i]}")
+
+
+# Output
+Vertex Distance from Source
+0               0
+1               5
+2               6
+3               7
+4               7
+```
+
+**Key Features**:
+
+- Time Complexity: **O(VE)** where V = number of vertices, E = number of edges
+- Handles negative weights and detects cycles
+
+---
+
+### **Comparison Table**
+
+| Feature         | Dijkstra           | Bellman-Ford                |
+| --------------- | ------------------ | --------------------------- |
+| Edge Weights    | Non-negative only  | Allows negative             |
+| Cycle Handling  | No negative cycles | Detects negative cycles     |
+| Time Complexity | **O((V+E) log V)** | **O(VE)**                   |
+| Use Cases       | Routing, maps      | Financial networks, physics |
+
+---
+
+### **Implementation Notes**
+
+- **Dijkstra** uses adjacency lists and heaps for efficiency.
+- **Bellman-Ford** iterates over all edges **V-1** times, making it less efficient for dense graphs.
+- Use Dijkstra for non-negative graphs (faster), Bellman-Ford for graphs requiring negative-weight handling.
+
+### Negative Edge Weights
+
+In graphs, an edge weight is a number assigned to an edge that represents a cost or benefit of traversing that edge.
+
+Negative edge weights are when the assigned number is negative, which usually represents a cost or penalty associated with traversing the edge. Some algorithms for graph problems cannot handle negative edge weights, while others can.
+
+Negative edge weights may make problems more complicated and require different algorithms or modifications to handle them.
+
+### Relaxation
+
+Relaxation is the process of updating the estimated cost or distance to reach a node in a graph when a shorter path to that node is found.
+
+It's a necessary step in algorithms that search for the shortest path in a graph, such as the Bellman-Ford algorithm.
+
+Relaxation helps to find the shortest path by continuously updating the estimated distances until the shortest path is found.
+
+### Sparse Graphs
+
+A sparse graph is a graph that has relatively few edges compared to the number of vertices it has. In other words, in a sparse graph, most pairs of vertices are not directly connected by an edge.
+
+Sparse graphs are commonly found in real-world applications, such as social networks or transportation networks, where the number of connections or relationships between entities is much smaller than the total number of entities.
+
+Because of their sparsity, some algorithms can be faster to execute on sparse graphs since they don't have to check as many edges.
+
+### Dynamic Programming
+
+Dynamic programming is an optimization technique and a way to solve problems by breaking them down into smaller, simpler subproblems and storing the solutions to those subproblems.
+
+By reusing those solutions instead of solving the same subproblems over and over again, we can solve the overall problem more efficiently.
+
+### Caching
+
+Caching is a technique to store frequently accessed data or information in a temporary location called a cache. When the data is needed again, it can be retrieved much more quickly from the cache than from the original source.
+
+This helps improve the speed and efficiency of accessing data, especially when dealing with large amounts of data or frequently accessed information.
+
+Caching is used in many applications to improve overall system performance.
+
+### Memoization
+
+Memoization, is a technique of caching or storing the results of expensive function calls and then reusing those results when the same function is called again with the same input parameters.
+
+The idea behind memoization is to avoid repeating expensive calculations by storing the results of those calculations in memory. When the function is called again with the same input parameters, instead of recalculating the result, the function simply retrieves the previously calculated result from memory and returns it.
+
+### Caching vs. Memoization
+
+Caching is used to store and retrieve frequently accessed data, while memoization is used to avoid repeating expensive calculations by storing the results of those calculations in memory for later use.
+
+**Example 1**
+
+```python
+# Regular function that runs the entire process each time
+def add_to_80(n):
+    print('long time')
+    return n + 80
+
+# Optimized memoized version
+def memoized_add_to_80():
+    cache = {}
+    def inner(n):
+        if n in cache:
+            return cache[n]
+        else:
+            print('long time')
+            cache[n] = n + 80
+            return cache[n]
+    return inner
+
+# Testing both versions
+print("Regular function:")
+print('1', add_to_80(5))
+print('2', add_to_80(5))  # Will compute again
+
+print("\nMemoized function:")
+memoized = memoized_add_to_80()
+print('1', memoized(5))  # Computes
+print('2', memoized(5))  # Returns cached result
+
+# Output
+Regular function:
+long time
+1 85
+long time
+2 85
+
+Memoized function:
+long time
+1 85
+2 85
+```
+
+**Example 2**
+Let’s use another example to try to clarify the difference.
+
+Suppose you have a web application that displays a list of products on a page. The product data is stored in a database. When a user requests the page, the application fetches the product data from the database and displays it on the page. If another user requests the same page, the application has to fetch the product data from the database again, which can be slow and inefficient.
+
+To improve the performance of the application, you can use caching.
+
+The first time the application fetches the product data from the database, it stores the data in a cache. If another user requests the same page, the application checks the cache first. If the data is in the cache, it can be retrieved much more quickly than if it had to be fetched from the database again.
+
+Now, suppose you have a function in your application that calculates the Fibonacci sequence. The calculation of the Fibonacci sequence is a computationally expensive task. If the function is called multiple times with the same input parameter, it would be inefficient to calculate the sequence each time.
+
+To improve the performance of the function, you can use memoization.
+
+The first time the function is called with a particular input parameter, it calculates the Fibonacci sequence and stores the result in memory. If the function is called again with the same input parameter, it retrieves the result from memory instead of recalculating the sequence.
+
+![Memoization](images/memoization.png)
+
+**When to use Dynamic Programming?**
+
+To find out if we need to use dynamic problem programming in a problem, We can use these steps.
+
+1. Can be divided into subproblem.
+2. Recursive Solution.
+3. Are there repetitive subproblems?
+4. Memoize subproblems.
+
+![Dynamic Programming](images/dp.png)
+
+In general, dynamic programming is useful when a problem can be divided into smaller subproblems that can be solved independently, and the solutions to these subproblems can be combined to solve the overall problem.
+
+By avoiding redundant calculations using memoization, dynamic programming can often provide significant performance improvements over other techniques for solving the same problem.
+
+## Dynamic Programming Implementations
+
+Dynamic Programming (DP) can be implemented using **Memoization (Top-Down)** or **Tabulation (Bottom-Up)** approaches. Below is an explanation of both approaches, their differences, and examples.
+
+## **1. Memoization (Top-Down Approach)**
+
+Memoization involves solving a problem recursively while storing the results of already-solved subproblems in a data structure (like a dictionary or array). This avoids redundant computations by reusing previously computed results.
+
+### **Steps**:
+
+1. Start solving the problem at the top (main problem).
+2. Break it into smaller subproblems recursively.
+3. Store the result of each subproblem in a cache (e.g., dictionary or array).
+4. If a subproblem is encountered again, retrieve its result from the cache instead of recalculating it.
+
+## **2. Tabulation (Bottom-Up Approach)**
+
+Tabulation involves solving all possible subproblems iteratively and storing their results in a table (usually an array). The solution to the main problem is built incrementally from the results of smaller subproblems.
+
+### **Steps**:
+
+1. Define a table to store solutions to subproblems.
+2. Solve the smallest subproblems first (base cases).
+3. Use these solutions to iteratively solve larger subproblems.
+4. Continue until the main problem is solved.
+
+## **Comparison: Memoization vs Tabulation**
+
+| Feature             | Memoization (Top-Down)                        | Tabulation (Bottom-Up)                      |
+| ------------------- | --------------------------------------------- | ------------------------------------------- |
+| **Approach**        | Recursive                                     | Iterative                                   |
+| **Storage**         | Cache results dynamically                     | Predefined table                            |
+| **Execution Order** | Starts from the main problem                  | Starts from the smallest subproblem         |
+| **Overhead**        | Recursion overhead                            | No recursion overhead                       |
+| **Use Case**        | Efficient when not all subproblems are needed | Efficient when all subproblems are required |
+
+## **When to Use Which Approach**
+
+1. Use **Memoization**:
+
+   - When only a subset of subproblems needs to be solved.
+   - When recursion is more intuitive for the problem structure.
+
+2. Use **Tabulation**:
+   - When all subproblems need to be solved.
+   - When recursion depth might cause stack overflow.
+
+Both approaches are valid and interchangeable in many cases, but their efficiency depends on the specific problem and constraints.
+
+[Back to Top](#table-of-contents)
