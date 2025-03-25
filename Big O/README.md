@@ -89,11 +89,6 @@ _Note:_
 - Stack/Queue complexities assume array implementation (pointer-based would have O(n) access/search)
 - Linked list insertion/deletion assumes operation at known position (O(n) if need to search first)
 
-Here's a comprehensive **Big O Rule Book** for your README.md, formatted with clear explanations and examples:
-
-````markdown
-# Big O Rule Book
-
 ## Time Complexity Rules
 
 ### 🔴 Rule 1: Always Worst Case
@@ -104,7 +99,6 @@ Always analyze the worst-case scenario for algorithms.
 # Example: Linear search
 # Best: O(1) (first element), Worst: O(n) -> We use O(n)
 ```
-````
 
 ### 🔴 Rule 2: Remove Constants
 
@@ -203,7 +197,3 @@ Some operations may occasionally be expensive, but average over time is better.
 | Nested loops            | O(n²)             | O(1)     |
 | Divide & conquer        | O(log n)          | O(log n) |
 | Recursion (brute force) | O(branches^depth) | O(depth) |
-
-```
-
-```
